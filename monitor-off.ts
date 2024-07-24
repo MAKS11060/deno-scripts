@@ -1,9 +1,7 @@
 #!/usr/bin/env -S deno run -A
 
-// Install
-// deno install -Arfgn monitor-off --unstable-ffi https://raw.githubusercontent.com/MAKS11060/deno-scripts/main/monitor-off.ts
-
 const user32 = Deno.dlopen('user32.dll', {
+  // https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-sendmessagew#syntax
   SendMessageW: {
     parameters: ['i32', 'u32', 'u32', 'i32'],
     result: 'i32',
@@ -16,7 +14,7 @@ const SC_MONITORPOWER = 0xf170
 const MONITOR_OFF = 2
 
 function setMonitorToSleep() {
-  user32.symbols.SendMessageW(
+  return user32.symbols.SendMessageW(
     HWND_BROADCAST,
     WM_SYSCOMMAND,
     SC_MONITORPOWER,
