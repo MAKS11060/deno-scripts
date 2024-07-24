@@ -2,7 +2,7 @@
 
 ## Monitor off (windows only)
 
-> Install
+> Install:
 > ```powershell
 > deno install -Arfgn monitor-off --unstable-ffi https://raw.githubusercontent.com/MAKS11060/deno-scripts/main/monitor-off.ts
 > ```
